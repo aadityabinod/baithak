@@ -13,10 +13,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ReactNode } from "react";
-import { requireUser } from "../lib/hooks";
 import prisma from "../lib/db";
 import { redirect } from "next/navigation";
-import Logo from "@/public/logo.png";
 import Image from "next/image";
 import { DasboardLinks } from "../components/dashboard/DasboardLinks";
 import { ThemeToggle } from "../components/dashboard/ThemeToggle";
@@ -52,7 +50,7 @@ export default async function Dashboard({ children }: { children: ReactNode }) {
     return redirect("/");
   }
 
-  const data = await getData(session.user.id as string);
+  await getData(session.user.id as string);
 
   return (
     <>

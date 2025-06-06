@@ -22,11 +22,11 @@ const GrantIdRoute = () => {
       <div className="flex flex-col justify-center px-8 md:px-16 space-y-6">
         <h1 className="text-3xl font-bold text-indigo-900">Final Step 🚀</h1>
         <p className="text-lg text-gray-700">
-          You're one step away from unlocking your smart scheduling experience.
+          You&apos;re one step away from unlocking your smart scheduling experience.
         </p>
         <div className="bg-indigo-100 p-4 rounded-lg shadow-inner">
           <p className="text-sm text-indigo-800">
-            🔗 Let's connect your calendar and complete your onboarding.
+            🔗 Let&apos;s connect your calendar and complete your onboarding.
           </p>
         </div>
         <Button asChild className="w-full md:w-fit">
