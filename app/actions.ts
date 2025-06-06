@@ -5,7 +5,6 @@ import prisma from "./lib/db";
 import { requireUser } from "./lib/hooks";
 import {
   aboutSettingsSchema,
-  eventTypeSchema,
   EventTypeServerSchema,
   onboardingSchema,
 } from "./lib/zodSchemas";
@@ -14,7 +13,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { nylas } from "./lib/nylas";
 
-export async function onboardingAction(prevState: any, formData: FormData) {
+export async function onboardingAction(prevState: unknown, formData: FormData) {
   const session = await requireUser();
 
   const submission = await parseWithZod(formData, {
@@ -36,7 +35,7 @@ export async function onboardingAction(prevState: any, formData: FormData) {
     return submission.reply();
   }
 
-  const OnboardingData = await prisma.user.update({
+   const OnboardingData = await prisma.user.update({
     where: {
       id: session.user?.id,
     },
@@ -90,7 +89,7 @@ export async function onboardingAction(prevState: any, formData: FormData) {
   return redirect("/onboarding/grant-id");
 }
 
-export async function SettingsAction(prevState: any, formData: FormData) {
+export async function SettingsAction(prevState: unknown, formData: FormData) {
   const session = await requireUser();
 
   const submission = parseWithZod(formData, {
@@ -115,7 +114,7 @@ export async function SettingsAction(prevState: any, formData: FormData) {
 }
 
 export async function CreateEventTypeAction(
-  prevState: any,
+  prevState: unknown,
   formData: FormData
 ) {
   const session = await requireUser();
@@ -153,7 +152,7 @@ export async function CreateEventTypeAction(
   return redirect("/dashboard");
 }
 
-export async function EditEventTypeAction(prevState: any, formData: FormData) {
+export async function EditEventTypeAction(prevState: unknown, formData: FormData) {
   const session = await requireUser();
 
   const submission = await parseWithZod(formData, {
@@ -207,7 +206,7 @@ export async function DeleteEventTypeAction(formData: FormData) {
 }
 
 export async function updateEventTypeStatusAction(
-  prevState: any,
+  prevState: unknown,
   {
     eventTypeId,
     isChecked,
